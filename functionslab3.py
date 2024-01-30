@@ -1,5 +1,7 @@
 import math
 import random
+
+
 # 1
 def grams_to_ounces(grams):
     ounces = 28.3495231 * grams
@@ -8,20 +10,17 @@ def grams_to_ounces(grams):
 
 # 2
 def farenheit_to_celsius(farenheit):
-    C = (5 / 9) * (F - 32)
+    C = (5 / 9) * (farenheit - 32)
     return C
 
 
 def solve(numheads, numlegs):
-    a = []
-    k = 0
-    while k != numheads:
-        if (numlegs - numheads * 2 * k) >= 0 and (numlegs - numheads * 2 * k) % 4 == 0:
-            a.append((numlegs - numheads * 2) / 4)
-            a.append(numheads)
-        k += 1
-    return a
-
+    chick = 0
+    while numheads != chick + numlegs / 4:
+        numlegs -= 2
+        chick += 1
+    return chick, numlegs / 4
+print(solve(35, 94))
 
 def filter_prime(list1):
     list2 = []
@@ -44,11 +43,11 @@ def permut(s, step=0):
     for i in range(step, len(s)):
         string_copy = [ch for ch in s]
         string_copy[step], string_copy[i] = string_copy[i], string_copy[step]
-
         r = "".join(string_copy)
         set1.add(r)
         permut(string_copy, step + 1)
     return set1
+
 
 def revers(s):
     r = s.split()
@@ -57,21 +56,36 @@ def revers(s):
         g.append(r[i])
     return " ".join(g)
 
+
 def has_33(nums):
     for i in range(1, len(nums)):
         if nums[i] == nums[i - 1] and nums[i] == 3:
             return True
     return False
 
+
+print(has_33(([1, 3, 3])), has_33([1, 3, 1, 3]), has_33([3, 1, 3]))
+
+
 def spy_game(nums):
-    for i in range(1, len(nums) - 1):
-        if nums[i] == nums[i - 1] and nums[i] == 0 and nums[i + 1] == 7:
-            return True
+    count1, count2, count3 = 0, 0, 0
+    for i in range(0, len(nums)):
+        if nums[i] == 0 and count2 == 0 and count3 == 0 and count1 == 0:
+            count1 += 1
+        if nums[i] == 0 and count1 == 1 and count3 == 0 and count2 == 0:
+            count2 += 1
+        if nums[i] == 7 and count1 == 1 and count2 == 1 and count3 == 0:
+            count3 += 1
+    if count1 == count2 == count3:
+        return True
     return False
+
 
 def vol(radius):
     volume = radius * radius * math.pi
     return volume
+
+
 def unique(list1):
     unique_list = []
     for i in list1:
@@ -79,15 +93,19 @@ def unique(list1):
             unique_list.append(i)
     return unique_list
 
+
 def palindrome(string1):
     s = ''
     for i in range(len(string1) - 1, -1, -1):
         s += string1[i]
     return s == string1
+
+
 def histogram(list1):
     for i in list1:
         print('*' * i)
     return ''
+
 
 # game
 print("Hello! What is your name?")
