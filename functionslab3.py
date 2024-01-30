@@ -20,7 +20,6 @@ def solve(numheads, numlegs):
         numlegs -= 2
         chick += 1
     return chick, numlegs / 4
-print(solve(35, 94))
 
 def filter_prime(list1):
     list2 = []
@@ -64,7 +63,6 @@ def has_33(nums):
     return False
 
 
-print(has_33(([1, 3, 3])), has_33([1, 3, 1, 3]), has_33([3, 1, 3]))
 
 
 def spy_game(nums):
@@ -107,21 +105,25 @@ def histogram(list1):
     return ''
 
 
-# game
-print("Hello! What is your name?")
-name = input()
-print(f"Well, {name}, I am of a number between 1 and 20.")
 
-a = -1
-b = random.randint(1, 20)
-count = 0
-while a != b:
-    count += 1
-    print("Take a guess.")
-    a = int(input())
-    if a < b:
-        print("Your guess is too low.")
-    if a > b:
-        print("Your guess is too high")
-    print()
-print(f"Good job, {name}! You guessed my number in {count} guesses!")
+def sas():
+    print(solve(35, 94))
+    print(has_33(([1, 3, 3])), has_33([1, 3, 1, 3]), has_33([3, 1, 3]))
+    # game
+    print("Hello! What is your name?")
+    name = input()
+    print(f"Well, {name}, I am of a number between 1 and 20.")
+
+    a = -1
+    b = random.randint(1, 20)
+    count = 0
+    while a != b:
+        count += 1
+        print("Take a guess.")
+        a = int(input())
+        if a < b:
+            print("Your guess is too low.")
+        if a > b:
+            print("Your guess is too high")
+        print()
+    print(f"Good job, {name}! You guessed my number in {count} guesses!")
